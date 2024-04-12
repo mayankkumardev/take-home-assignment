@@ -62,15 +62,15 @@ The server will start on default PORT 3000.
 - **Logout Option**
 
 ### Backend
-- We have used SQL database i.e. Postgres for storage purposes.
-- We have implemented authentication and also applied authorization on all the routes.
-- We have implemented a `todo relation with user`, so the user will see only those todos which are created by him.
+- SQL database i.e., Postgres, is used for storage.
+- Authentication and authorization are implemented on all routes.
+- `Todo` relation with `user` is implemented, so users see only their own todos.
 - We are sending appropriate error messages and error code as per the respective action.
 - We have not implemented the actual `signup flow`, we are creating the default user and password when the backend server starts and using the same on the frontend side for logging into the account.
 
-For consistent code style, we have integrated `eslint`, `prettier` and `husky` packages. Please use following commands inside `backend` or `frontend` app to check the linting errors:
+To maintain code consistency while creating new files and increasing development speed, we use Plop. You can generate template files for components, queries, and mutations using the command npm run generate.
+
+For consistent code style, eslint, prettier, and husky packages are integrated. Please use the following commands inside the backend or frontend app to check for linting errors:
 - npm run lint
 - npm run lint-fix
 - npm run prettify
-
-For increasing development speed on the `frontend side`, we use Plop. You can generate template files for components, queries, and mutations using the command npm run generate.

@@ -1,0 +1,44 @@
+import api from '@todo/lib/api';
+import type { ReactQueryOptions } from '@todo/lib/react-query';
+import { useQuery } from '@tanstack/react-query';
+
+interface {{pascalCase name}}QueryParams {
+}
+
+interface BackendResponse {
+  // TODO: define the response interface here
+}
+
+export function get{{pascalCase name}}Query(params: {{pascalCase name}}QueryParams = {}) {
+  // TODO: customize your key if needed
+  const queryKey = ['{{kebabCase name}}', params];
+  const queryFn = async () => {
+    // TODO: set your endpoint here
+    const response = await api.get('');
+
+    if (!response.data) {
+      return Promise.reject(response);
+    }
+    return response.data as BackendResponse;
+  };
+
+  return {
+    queryKey,
+    queryFn,
+  };
+}
+
+export function use{{pascalCase name}}Query(
+  params: {{pascalCase name}}QueryParams = {},
+  options: ReactQueryOptions<BackendResponse> = {},
+) {
+  const { queryKey, queryFn } = get{{pascalCase name}}Query(params);
+
+  const query = useQuery({
+    queryKey,
+    queryFn,
+    ...options,
+  });
+
+  return query;
+}

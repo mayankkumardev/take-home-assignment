@@ -1,0 +1,32 @@
+import api from '@todo/lib/api';
+import type { ReactQueryMutateOptions } from '@todo/lib/react-query';
+import { useMutation } from '@tanstack/react-query';
+
+type MutateOptions = ReactQueryMutateOptions<
+  BackendResponse,
+  unknown,
+  MutationInput
+>;
+
+export interface MutationInput {
+}
+
+export interface BackendResponse {
+  // TODO: define the response interface here
+}
+
+export function use{{pascalCase name}}Mutation(options?: MutateOptions) {
+  return useMutation<BackendResponse, unknown, MutationInput>({
+    mutationKey: ['{{kebabCase name}}'],
+    mutationFn: async input => {
+      // TODO: set your endpoint here
+      const response = await api.post('');
+
+      if (!response.data) {
+        return Promise.reject(response);
+      }
+      return response.data as BackendResponse;
+    },
+    ...options,
+  });
+}
